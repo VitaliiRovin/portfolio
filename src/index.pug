@@ -1,0 +1,308 @@
+include ./mixins.pug
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Portfolio | main page
+  body
+    .wrapper
+      header.header
+        .header__container.container
+          .header__logo
+            .logo РВ
+          .header__nav
+            nav.menu
+              -
+                var items = [
+                  {href: "#", name: "Главная"},
+                  {href: "#", name: "Обо мне"},
+                  {href: "#", name: "Навыки"},
+                  {href: "#", name: "Работы"},
+                  {href: "#", name: "Отзывы"},
+                  {href: "#", name: "Связаться"}
+                ];
+              ul.menu__list
+                each item in items
+                  li.menu__item
+                    a.menu__link(href=item.href) #{item.name}
+          .header__links
+            -
+              var icons = [
+                {href: "#", name: "insta"},
+                {href: "#", name: "vk"},
+                {href: "#", name: "github"}
+              ];
+            ul.socials
+              each icon in icons
+                li.socials__item
+                  a.socials__link(href=icon.href)
+                    +icon(icon.name, "socials__icon")
+
+      .bg-wrapper.bg-wrapper_mountain
+        section.hero.section
+          .hero__container.container
+            .hero__content
+              .hero__user-text Личный сайт #[br]веб разработчика
+              h1.hero__user-name Ровин #[br] Виталий
+          a.btn-scroll
+            .btn-scroll__text Скролл
+            +icon("scroll", "btn-scroll__icon")
+
+        section.about.section
+          .about__container.container
+            .about__content
+              .about__left-column
+                .about__avatar
+                  .avatar
+                    +image("content/user.jpg", "avatar__img", "Аватар Ровина Виталия")
+                .about__info
+                  -
+                    var userData = [
+                      {left: "Проживаю:", right: "Красноярск"},
+                      {left: "Возраст:", right: "25 лет"},
+                      {left: "Родился:", right: "15 февраля 1995"}
+                    ];
+                  .about__table
+                    each data in userData
+                      .about__table-row
+                        .about__table-left= data.left
+                        .about__table-right= data.right
+              .about__right-column
+                .about__disclaimer Привет, меня зовут
+                .about__heading.heading__big Ровин Виталий
+                .about__desc
+                  p
+                  | Я занимаюсь разработкой современных сайтов и приложений.
+                  | Мне нравится делать интересные и современные проекты.
+                .about__ps
+                  +icon("star", "about__star-icon")
+                  p
+                  | Этот сайт я сделал в рамках обучения в Школе онлайн образования
+                  | LoftSchool. Чуть позже я освежу в нём свой контент.
+                  | А пока посмотрите, как тут всё классно и красиво!
+          .about__triangles.triangles
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").about__triangles-item
+              polygon(points="0,0 0,100 1000,100")
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").about__triangles-item
+              polygon(points="1000,0 1000,100 0,100")
+
+      section.skills.section
+        .skills__container.container
+          .skills__content
+            .skills__left-column
+              .skills__img
+                +image("content/backpack.png", "skills__backpack", "Картинка рюкзака")
+            .skills__right-column
+              .skills__preview
+                .skills__heading.heading__medium Чем я могу быть полезен вам
+                p
+                  | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+                  | Чуть позже я освежу в нём свой контент. А пока посмотрите,
+                  | как тут всё классно и красиво!
+              -
+                var items = [
+                  ["Front-end", ["HTML5", "CSS3", "Javascript", "Jquery и Vue.js"]],
+                  ["Workflow", ["Git", "Terminal", "Gulp", "Webpack"]]
+                ];
+              ul.skills__list
+                each row in items
+                  li.skills__item
+                    .skills__name-list.heading__small= row[0]
+                    ul.skills__row-list
+                      each cell in row[1]
+                        li.skills_row-item
+                          .skill
+                            .skill__circle
+                            .skill__circle
+                            .skill__title= cell
+
+      section.works.section
+        .works__container.container
+          .works__content
+            .works__heading.heading__big Мои работы
+            .works__preview
+              -
+                var portfolio = [
+                  {
+                    active: true,
+                    id: "1",
+                    name: "Сайт школы образоания",
+                    desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+                    link: "#",
+                    skills: ["HTML", "CSS", "Javascrit"],
+                    img: "portfolio/1.jpg",
+                  },
+                  {
+                    id: "2",
+                    name: "Сайт школы образоания",
+                    desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+                    link: "#",
+                    skills: ["CSS", "HTML", "Javascrit"],
+                    img: "portfolio/2.jpg",
+                  },
+                  {
+                    id: "3",
+                    name: "Сайт школы образоания",
+                    desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+                    link: "#",
+                    skills: ["HTML", "Javascrit", "CSS"],
+                    img: "portfolio/3.jpg",
+                  },
+                  {
+                    id: "4",
+                    name: "Сайт школы образоания",
+                    desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+                    link: "#",
+                    skills: ["Javascrit", "HTML", "CSS"],
+                    img: "portfolio/4.jpg",
+                  },
+                ]
+              .works__desc-gallery
+                .works__img-big
+                  .works__img-block
+                    +image(portfolio[0].img, "works__img", portfolio[0].name)
+                    ul.works__img-list
+                      each work in portfolio
+                        li.works__img-item
+                          +image(work.img, "works__img-small", work.name)
+                  .works__btns
+                    .works__arrow.btn-arrow
+                      +icon("arrow-down", "works__btn-left")
+                    .works__arrow.btn-arrow
+                      +icon("arrow-down", "works__btn-right")
+              ul.works__desc-list
+                each work in portfolio
+                  li.works__desc-item(class=work.active == true ? "active" : "")
+                    ul.works__technologies-list
+                      each skill in work.skills
+                        .works__number= work.id
+                        li.works__technologies-item
+                          .works__skill= skill
+                    .works__name.heading__medium= work.name
+                    p= work.desc
+                    a.works__link(href=work.link)
+                      +icon("link", "works__link-icon")
+                      .works__text Посмотреть сайт
+
+      .bg-wrapper.bg-wrapper_budda
+        section.reviews.section
+          .reviews__triangles.triangles
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").reviews__triangles-item
+              polygon(points="0,0 0,100 1000,100")
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").reviews__triangles-item
+              polygon(points="1000,0 1000,100 0,100")
+          .reviews__container.container
+            .reviews__content
+              .reviews__preview
+                .reviews__heading.heading__big Что обо мне говорят
+                .reviews__btns
+                  .reviews__arrow.btn-arrow
+                    +icon("arrow-down", "reviews__btn-left")
+                  .reviews__arrow.btn-arrow
+                    +icon("arrow-down", "reviews__btn-right")
+              -
+                var reviews = [
+                  {
+                    img: "reviews/dima.jpg",
+                    name: "Ковальчук Дмитрий",
+                    position: "Основатель Loftschool",
+                    review: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! " +
+                            "4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+                  },
+                  {
+                    img: "reviews/vlad.jpg",
+                    name: "Владимир Сабанцев",
+                    position: "Преподаватель",
+                    review: "Этот код выдержит любые испытания. Только пожалуйста, " +
+                            "не загружайте сайт на слишком старых браузерах",
+                  },
+                ]
+              ul.reviews__list
+                each review in reviews
+                  li.reviews__item
+                    .reviews__block
+                      .reviews__quote
+                        +icon("quote", "reviews__quote-icon")
+                      p= review.review
+                    .reviews__author
+                      .reviews__avatar
+                        .avatar
+                          +image(review.img, "avatar__img", review.name)
+                      .reviews__author-info
+                        .reviews__name= review.name
+                        .reviews__position= review.position
+
+        section.contact.section
+          .contact__container.container
+            .contact__content
+              .contact__heading.heading__big Связаться со мной
+              form.form
+                .form__row
+                  label.form__label
+                    span.form__text Введите ваше имя
+                    span.form__block
+                      span.form__block-icon
+                        +icon("user", "form__icon")
+                      input.form__input(type="text" placeholder="Ковальчук Дмитрий")
+                  label.form__label
+                    span.form__text Введите ваш email
+                    span.form__block
+                      span.form__block-icon
+                        +icon("envelope", "form__icon")
+                      input.form__input(type="email" placeholder="loftschool@study.com")
+                .form__row
+                  label.form__label.form__textarea
+                    span.form__text Сообщение к письму
+                    span.form__block.form__textarea
+                      span.form__block-icon
+                        +icon("message", "form__icon")
+                      textarea.form__input.form__textarea(placeholder="Требуется ваша помощь в создании сайта. \nИнтересуют сроки и цена вопроса")
+                .form__row
+                  button.btn-send(type="submit") Отправить
+
+      footer.footer
+        .footer__container.container
+          .footer__content
+            .footer__col-left
+              .footer__year
+                .footer__copyright
+                  +icon("copyright", "footer__copyright-icon")
+                .footer__year-copyright 2020
+              .footer__user-info
+                .footer__user-name Ровин Виталий
+                .footer__user-text Личный сайт #[br]веб-разработчика
+            .footer__col-right
+              nav.menu.menu__footer
+                -
+                  var items = [
+                    {href: "#", name: "Главная"},
+                    {href: "#", name: "Обо мне"},
+                    {href: "#", name: "Навыки"},
+                    {href: "#", name: "Работы"},
+                    {href: "#", name: "Отзывы"},
+                    {href: "#", name: "Связаться"}
+                  ];
+                ul.menu__list
+                  each item in items
+                    li.menu__item
+                      a.menu__link(href=item.href) #{item.name}
+              .footer__extra-info
+                .footer__extra-info-left
+                  p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                  -
+                    var icons = [
+                      {href: "#", name: "insta"},
+                      {href: "#", name: "vk"},
+                      {href: "#", name: "github"}
+                    ];
+                  ul.socials
+                    each icon in icons
+                      li.socials__item.socials__item_footer
+                        a.socials__link(href = icon.href)
+                          + icon(icon.name, "socials__icon")
+                .footer__extra-info-right
+                  p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                  h3 Martin Golding

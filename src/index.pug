@@ -41,6 +41,8 @@ html(lang="en")
                   a.socials__link(href=icon.href)
                     +icon(icon.name, "socials__icon")
 
+          button.btn-bar
+            +icon("bar-menu", "btn-bar__icon")
       .bg-wrapper.bg-wrapper_mountain
         section.hero.section
           .hero__container.container
@@ -169,9 +171,9 @@ html(lang="en")
                         li.works__img-item
                           +image(work.img, "works__img-small", work.name)
                   .works__btns
-                    .works__arrow.btn-arrow
+                    button.works__arrow.btn-arrow
                       +icon("arrow-down", "works__btn-left")
-                    .works__arrow.btn-arrow
+                    button.works__arrow.btn-arrow
                       +icon("arrow-down", "works__btn-right")
               ul.works__desc-list
                 each work in portfolio
@@ -199,9 +201,9 @@ html(lang="en")
               .reviews__preview
                 .reviews__heading.heading__big Что обо мне говорят
                 .reviews__btns
-                  .reviews__arrow.btn-arrow
+                  button.reviews__arrow.btn-arrow
                     +icon("arrow-down", "reviews__btn-left")
-                  .reviews__arrow.btn-arrow
+                  button.reviews__arrow.btn-arrow
                     +icon("arrow-down", "reviews__btn-right")
               -
                 var reviews = [

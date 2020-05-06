@@ -1,8 +1,14 @@
 {
   "text-color": "#414c63",
   "links-color": "#4b6fd7",
+  "white-color": "#ffffff",
+  "star-color": "#db0200",
+  "footer-bg-color": "#252830",
+  "arrow-bg-color": "#353e4e",
+  "number-color": "#e6e6e6",
+
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px"
+  "bp-phones": "320px"
 }

@@ -8,3 +8,20 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.header__nav {
+    @include desktop {
+        display: none;
+    }
+}
+
+.header__links {
+    @include desktop {
+        margin-left: auto;
+        margin-right: 90px;
+    }
+
+    @include tablets {
+        display: none;
+    }
+}

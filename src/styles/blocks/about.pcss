@@ -1,5 +1,6 @@
 .about__container {
     width: 65%;
+    padding: 130px 0 260px;
 
     @include desktop {
         width: 85%;
@@ -8,6 +9,12 @@
 
 .about__content {
     display: flex;
+    font-size: 16px;
+    line-height: 1.71;
+
+    @include desktop {
+        font-size: 14px;
+    }
 
     @include tablets {
         flex-direction: column;
@@ -20,14 +27,18 @@
 
 .about__left-column {
     margin-right: 85px;
-    min-width: 310px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @include desktop {
+        align-items: flex-start;
+    }
+
     @include tablets {
         margin-right: 0;
         margin-bottom: 45px;
+        align-items: center;
     }
 }
 
@@ -35,32 +46,60 @@
     width: 200px;
     height: 200px;
     margin-bottom: 80px;
+
+    @include desktop {
+        width: 170px;
+        height: 170px;
+        margin-bottom: 55px;
+    }
+
+    @include tablets {
+        margin-bottom: 30px;
+    }
 }
 
 .about__table-row {
     font-weight: 600;
-    font-size: 16px;
     display: table-row;
+
+    &:last-child .about__table-left {
+        padding-bottom: 0;
+    }
 }
 
 .about__table-left {
     opacity: 0.3;
     display: table-cell;
     padding-right: 80px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 
     &:last-child {
         padding-bottom: 0;
     }
+
+    @include desktop {
+        padding-right: 35px;
+        padding-bottom: 15px;
+    }
+}
+
+.about__table-right {
+    white-space: nowrap;
 }
 
 .about__right-column {
-    font-size: 16px;
     font-weight: 600;
 }
 
 .about__heading {
     margin-bottom: 30px;
+
+    @include heading-big;
+
+    @include desktop {
+        font-size: 30px;
+        line-height: 1.2;
+    }
 }
 
 .about__disclaimer {
@@ -71,6 +110,10 @@
 .about__desc {
     opacity: 0.5;
     margin-bottom: 85px;
+
+    @include tablets {
+        margin-bottom: 45px;
+    }
 }
 
 .about__ps {
@@ -78,19 +121,6 @@
     opacity: 0.5;
     font-style: italic;
     font-weight: normal;
-}
-
-.about__triangles {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.about__triangles-item {
-    width: 50%;
-    height: 120px;
-    fill: currentColor;
 }
 
 .about__star-icon {

@@ -1,0 +1,61 @@
+.circle {
+    position: relative;
+}
+
+.circle__block {
+    width: 154px;
+    height: 154px;
+
+    &:nth-child(2) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @include desktop {
+        width: 134px;
+        height: 134px;
+    }
+}
+
+.circle__name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: $text-color;
+    opacity: 0.5;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.circle__ring {
+    r: 67;
+    cx: 77;
+    cy: 77;
+    fill: transparent;
+    stroke: $circle-color;
+    stroke-width: 10;
+}
+
+.circle__ring-gradient {
+    transform-origin: 50% 50%;
+    transform: rotate(180deg);
+    stroke: url(#gradient);
+    stroke-width: 20;
+    stroke-dasharray: 421;
+    stroke-dashoffset: 317;
+}
+
+.circle__start {
+    stop-color: $gradient-start-color;
+}
+
+.circle__end {
+    stop-color: $gradient-end-color;
+}
+
+
+

@@ -1,8 +1,24 @@
+//.hero {
+//    min-height: 900px;
+//
+//    @include desktopHd {
+//        min-height: 900px;
+//    }
+//
+//    @include desktop {
+//        min-height: 900px;
+//    }
+//
+//    @include tablets {
+//        min-height: 900px;
+//    }
+//}
+
 .hero__content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    padding: 410px 0;
+
+    @include flex;
 
     @include desktopHd {
         flex-direction: row;

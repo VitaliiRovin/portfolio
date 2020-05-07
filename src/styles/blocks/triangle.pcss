@@ -1,4 +1,22 @@
 .triangles {
     display: flex;
     color: $white-color;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.triangles_rotate {
+    bottom: auto;
+    top: 0;
+
+    .triangles__item {
+        transform: rotate(180deg);
+    }
+}
+
+.triangles__item {
+    width: 50%;
+    fill: currentColor;
 }

@@ -1,28 +1,48 @@
+.reviews__container {
+    padding: 260px 0 85px;
+}
+
 .reviews__preview {
     display: flex;
     margin-bottom: 90px;
+
+    @include desktop {
+        margin-bottom: 65px;
+    }
+
+    @include tablets {
+        margin-bottom: 30px;
+        flex-direction: column;
+    }
 }
 
 .reviews__heading {
     margin-right: 120px;
-}
 
-.reviews__triangles-item {
-    width: 50%;
-    height: 120px;
-    fill: currentColor;
-    transform: rotate(180deg);
-}
+    @include heading-big;
 
-.reviews__triangles {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
+    @include desktopHd {
+        margin-right: 70px;
+    }
+
+    @include desktop {
+        font-size: 30px;
+        margin-right: 30px;
+    }
+
+    @include tablets {
+        margin-right: 0;
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
 }
 
 .reviews__btns {
     display: flex;
+
+    @include tablets {
+        margin: 0 auto;
+    }
 }
 
 .reviews__btn-left {
@@ -64,6 +84,10 @@
         font-size: 16px;
         font-weight: 600;
         line-height: 1.88;
+
+        @include desktop {
+            font-size: 14px;
+        }
     }
 }
 
@@ -71,12 +95,20 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+
+    @include desktop {
+        font-size: 16px;
+    }
 }
 
 .reviews__position {
     opacity: 0.3;
     font-size: 16px;
     font-weight: 600;
+
+    @include desktop {
+        font-size: 14px;
+    }
 }
 
 .reviews__quote {
@@ -84,7 +116,21 @@
     color: $text-color;
     position: absolute;
     top: 0;
-    left: -100px;
+    left: -96px;
+
+    @include desktopHd {
+        width: 69px;
+        left: -92px;
+    }
+
+    @include desktop {
+        width: 30px;
+        left: -40px;
+    }
+
+    @include tablets {
+        display: none;
+    }
 }
 
 .reviews__quote-icon {
@@ -95,5 +141,38 @@
 }
 
 .reviews__item {
-    margin-left: 100px;
+    margin-left: 96px;
+    margin-right: 80px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:last-child {
+        margin-right: 0;
+
+
+
+
+
+    // удалить до js
+        @include tablets {
+            display: none;
+        }
+    }
+
+    @include desktopHd {
+        margin-right: 40px;
+        margin-left: 92px;
+    }
+
+    @include desktop {
+        margin-right: 55px;
+        margin-left: 40px;
+    }
+
+    @include tablets {
+        margin-right: 0;
+        margin-left: 0;
+    }
 }

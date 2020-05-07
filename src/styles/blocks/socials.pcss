@@ -16,18 +16,16 @@
     border-radius: 50%;
     border: solid 1px $white-color;
     opacity: 0.3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 20px;
+
+    @include flex;
 
     &:last-child {
         margin-right: 0;
     }
 
         .socials__link {
-        width: 25px;
-        height: 20px;
+        width: 23px;
     }
 }
 
@@ -38,7 +36,7 @@
 }
 
 .socials__link {
-    width: 31px;
-    height: 25px;
-    display: block;
+    width: 27px;
+
+    @include flex;
 }

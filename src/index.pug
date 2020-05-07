@@ -74,7 +74,7 @@ html(lang="en")
                         .about__table-right= data.right
               .about__right-column
                 .about__disclaimer Привет, меня зовут
-                .about__heading.heading__big Ровин Виталий
+                h2.about__heading Ровин Виталий
                 .about__desc
                   p
                   | Я занимаюсь разработкой современных сайтов и приложений.
@@ -85,21 +85,21 @@ html(lang="en")
                   | Этот сайт я сделал в рамках обучения в Школе онлайн образования
                   | LoftSchool. Чуть позже я освежу в нём свой контент.
                   | А пока посмотрите, как тут всё классно и красиво!
-          .about__triangles.triangles
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").about__triangles-item
+          .triangles
+            svg(viewBox="0 0 1000 100").triangles__item
               polygon(points="0,0 0,100 1000,100")
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").about__triangles-item
+            svg(viewBox="0 0 1000 100").triangles__item
               polygon(points="1000,0 1000,100 0,100")
 
       section.skills.section
         .skills__container.container
           .skills__content
-            .skills__left-column
+            .skills__column.skills__left-column
               .skills__img
                 +image("content/backpack.png", "skills__backpack", "Картинка рюкзака")
-            .skills__right-column
+            .skills__column.skills__right-column
               .skills__preview
-                .skills__heading.heading__medium Чем я могу быть полезен вам
+                h2.skills__heading Чем я могу быть полезен вам
                 p
                   | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
                   | Чуть позже я освежу в нём свой контент. А пока посмотрите,
@@ -112,24 +112,29 @@ html(lang="en")
               ul.skills__list
                 each row in items
                   li.skills__item
-                    .skills__name-list.heading__small= row[0]
+                    .skills__name-list= row[0]
                     ul.skills__row-list
                       each cell in row[1]
-                        li.skills_row-item
-                          .skill
-                            .skill__circle
-                            .skill__circle
-                            .skill__title= cell
+                        li.skills__row-item.circle
+                          .circle__block
+                            svg(viewBox="0 0 154 154").circle__svg
+                              circle.circle__ring
+                          .circle__block
+                            svg(viewBox="0 0 154 154").circle__svg
+                              circle.circle__ring.circle__ring-gradient
+                              linearGradient#gradient
+                                stop.circle__start(offset="0%")
+                                stop.circle__end(offset="100%")
+                          .circle__name= cell
 
       section.works.section
         .works__container.container
           .works__content
-            .works__heading.heading__big Мои работы
+            h2.works__heading Мои работы
             .works__preview
               -
                 var portfolio = [
                   {
-                    active: true,
                     id: "1",
                     name: "Сайт школы образоания",
                     desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
@@ -154,6 +159,7 @@ html(lang="en")
                     img: "portfolio/3.jpg",
                   },
                   {
+                    active: true,
                     id: "4",
                     name: "Сайт школы образоания",
                     desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
@@ -161,29 +167,38 @@ html(lang="en")
                     skills: ["Javascrit", "HTML", "CSS"],
                     img: "portfolio/4.jpg",
                   },
+                  {
+                    id: "5",
+                    name: "Сайт школы образоания",
+                    desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+                    link: "#",
+                    skills: ["Javascrit", "CSS", "HTML"],
+                    img: "portfolio/5.jpg",
+                  },
                 ]
               .works__desc-gallery
-                .works__img-big
-                  .works__img-block
-                    +image(portfolio[0].img, "works__img", portfolio[0].name)
-                    ul.works__img-list
-                      each work in portfolio
-                        li.works__img-item
-                          +image(work.img, "works__img-small", work.name)
-                  .works__btns
-                    button.works__arrow.btn-arrow
-                      +icon("arrow-down", "works__btn-left")
-                    button.works__arrow.btn-arrow
-                      +icon("arrow-down", "works__btn-right")
+                ul.works__number-list
+                  each work in portfolio
+                    li.works__number-item(class=work.active == true ? "active" : "")= work.id
+                .works__img-block
+                  +image(portfolio[0].img, "works__img", portfolio[0].name)
+                  ul.works__img-list
+                    each work in portfolio
+                      li.works__img-item(class=work.active == true ? "active" : "")
+                        +image(work.img, "works__img-small", work.name)
+                .works__btns
+                  button.works__arrow.btn-arrow
+                    +icon("arrow-down", "works__btn-left")
+                  button.works__arrow.btn-arrow
+                    +icon("arrow-down", "works__btn-right")
               ul.works__desc-list
                 each work in portfolio
                   li.works__desc-item(class=work.active == true ? "active" : "")
                     ul.works__technologies-list
                       each skill in work.skills
-                        .works__number= work.id
                         li.works__technologies-item
                           .works__skill= skill
-                    .works__name.heading__medium= work.name
+                    .works__name= work.name
                     p= work.desc
                     a.works__link(href=work.link)
                       +icon("link", "works__link-icon")
@@ -191,15 +206,15 @@ html(lang="en")
 
       .bg-wrapper.bg-wrapper_budda
         section.reviews.section
-          .reviews__triangles.triangles
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").reviews__triangles-item
+          .triangles.triangles_rotate
+            svg(viewBox="0 0 1000 100").triangles__item
               polygon(points="0,0 0,100 1000,100")
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").reviews__triangles-item
+            svg(viewBox="0 0 1000 100").triangles__item
               polygon(points="1000,0 1000,100 0,100")
           .reviews__container.container
             .reviews__content
               .reviews__preview
-                .reviews__heading.heading__big Что обо мне говорят
+                h2.reviews__heading Что обо мне говорят
                 .reviews__btns
                   button.reviews__arrow.btn-arrow
                     +icon("arrow-down", "reviews__btn-left")
@@ -208,6 +223,7 @@ html(lang="en")
               -
                 var reviews = [
                   {
+                    active: true,
                     img: "reviews/dima.jpg",
                     name: "Ковальчук Дмитрий",
                     position: "Основатель Loftschool",
@@ -224,7 +240,7 @@ html(lang="en")
                 ]
               ul.reviews__list
                 each review in reviews
-                  li.reviews__item
+                  li.reviews__item(class=review.active == true ? "active" : "")
                     .reviews__block
                       .reviews__quote
                         +icon("quote", "reviews__quote-icon")
@@ -240,7 +256,7 @@ html(lang="en")
         section.contact.section
           .contact__container.container
             .contact__content
-              .contact__heading.heading__big Связаться со мной
+              h2.contact__heading Связаться со мной
               form.form
                 .form__row
                   label.form__label

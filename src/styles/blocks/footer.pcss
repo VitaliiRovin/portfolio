@@ -21,6 +21,10 @@
     align-items: center;
     margin-right: 50px;
     line-height: 1;
+
+    @include desktopHd {
+        margin-bottom: 30px;
+    }
 }
 
 .footer__year-copyright {
@@ -38,9 +42,9 @@
 
 .footer__user-text {
     opacity: 0.3;
-    font-size: 16px;
     line-height: 1.88;
 }
+
 .footer__user-info {
     min-width: 145px;
 }
@@ -48,33 +52,77 @@
 .footer__extra-info {
     display: flex;
     justify-content: space-between;
+
+    @include desktop {
+        flex-direction: column;
+    }
 }
 
 .footer__extra-info-left {
     max-width: 350px;
 
+    @include desktop {
+        max-width: none;
+        margin-bottom: 60px;
+    }
+
+    @include tablets {
+        margin-bottom: 50px;
+    }
+
     p {
         opacity: 0.3;
-        font-size: 16px;
+        line-height: 1.88;
+        margin-bottom: 20px;
+
+        @include desktop {
+            margin-bottom: 18px;
+        }
+
+        @include tablets {
+            margin-bottom: 15px;
+        }
     }
+
 }
 
 .footer__extra-info-right {
     max-width: 450px;
 
+    @include desktop {
+        max-width: none;
+    }
+
     h3 {
-        font-size: 16px;
         font-style: italic;
     }
 
     p {
         opacity: 0.3;
-        font-size: 16px;
+        line-height: 1.88;
+        margin-bottom: 35px;
+
+        @include desktop {
+            margin-bottom: 15px;
+        }
+
+        @include tablets{
+            margin-bottom: 30px;
+        }
     }
 }
 
 .footer__content {
     display: flex;
+    font-size: 16px;
+
+    @include desktop {
+        font-size: 14px;
+    }
+
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .footer__col-left {
@@ -82,22 +130,17 @@
     flex-direction: row;
     align-items: flex-start;
     margin-right: 100px;
+
+    @include desktopHd {
+        margin-right: 0;
+        flex-direction: column;
+    }
+
+    @include tablets {
+        margin-bottom: 50px;
+    }
 }
 
 .footer__container {
     padding: 95px 0;
-}
-
-.footer__extra-info-left {
-    p {
-        line-height: 1.88;
-        margin-bottom: 20px;
-    }
-}
-
-.footer__extra-info-right {
-    p {
-        line-height: 1.88;
-        margin-bottom: 30px;
-    }
 }

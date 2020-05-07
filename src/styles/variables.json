@@ -6,6 +6,10 @@
   "footer-bg-color": "#252830",
   "arrow-bg-color": "#353e4e",
   "number-color": "#e6e6e6",
+  "border-active-color": "#dc9322",
+  "gradient-start-color": "#7c00ea",
+  "gradient-end-color": "#4a00ed",
+  "circle-color": "#e9e9e9",
 
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",

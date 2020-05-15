@@ -1,0 +1,37 @@
+script(type="text/x-template")#reviews-container
+  .reviews__content
+    .reviews__preview
+      h2.reviews__heading Что обо мне говорят
+      btns(
+        @click="slideReviews"
+      )
+    review(
+      :way="way"
+    )
+
+script(type="text/x-template")#reviews-btns
+  .reviews__btns
+    button.btn-arrow.reviews__btn-left(
+      @click.prevent="clickReviews('left')"
+    )
+      +icon("arrow-down", "reviews__btn")
+    button.btn-arrow.reviews__btn-right(
+      @click.prevent="clickReviews('right')"
+    )
+      +icon("arrow-down", "reviews__btn")
+
+script(type="text/x-template")#reviews-list
+  .reviews__block
+    ul.reviews__list
+      li.reviews__item(v-for="review in reviews" :key="review.id")
+        .reviews__text
+          .reviews__quote
+            +icon("quote", "reviews__quote-icon")
+          p {{review.review}}
+        .reviews__author
+          .reviews__avatar
+            .avatar
+              img.avatar__img(:src="review.img")
+          .reviews__author-info
+            .reviews__name {{review.name}}
+            .reviews__position {{review.position}}

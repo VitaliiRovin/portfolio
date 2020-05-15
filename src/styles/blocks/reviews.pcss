@@ -46,28 +46,35 @@
 }
 
 .reviews__btn-left {
-    transform: rotate(180deg);
-}
-
-.reviews__arrow {
     border: solid 1px $text-color;
     border-radius: 50%;
     color: $text-color;
     background-color: transparent;
+    margin-right: 30px;
 
-    &:first-child {
-        margin-right: 30px;
+    svg {
+        transform: rotate(180deg);
     }
 }
 
+.reviews__btn-right {
+    border: solid 1px $text-color;
+    border-radius: 50%;
+    color: $text-color;
+    background-color: transparent;
+}
+
+.reviews__btn-left.disabled,
+.reviews__btn-right.disabled {
+    opacity: 0.5;
+}
+
 .reviews__avatar {
+    min-width: 75px;
+    min-height: 75px;
     width: 75px;
     height: 75px;
     margin-right: 20px;
-}
-
-.reviews__list {
-    display: flex;
 }
 
 .reviews__author {
@@ -75,7 +82,7 @@
     align-items: center;
 }
 
-.reviews__block {
+.reviews__text {
     margin-bottom: 20px;
     position: relative;
 
@@ -140,25 +147,41 @@
     opacity: 0.05;
 }
 
+.reviews__list {
+    right: 0;
+    display: flex;
+    position: relative;
+    transition: all ease 1s;
+    will-change: right;
+}
+
+.reviews__block {
+    max-width: 1002px;
+    overflow: hidden;
+
+    @include desktopHd {
+        max-width: 914px;
+    }
+
+    @include desktop {
+        max-width: 710px;
+    }
+
+    @include tablets {
+        max-width: 300px;
+    }
+}
+
 .reviews__item {
     margin-left: 96px;
     margin-right: 80px;
-    max-width: 350px;
+    min-width: 325px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     &:last-child {
         margin-right: 0;
-
-
-
-
-
-    // удалить до js
-        @include tablets {
-            display: none;
-        }
     }
 
     @include desktopHd {
@@ -167,11 +190,13 @@
     }
 
     @include desktop {
+        min-width: 260px;
         margin-right: 55px;
         margin-left: 40px;
     }
 
     @include tablets {
+        min-width: 300px;
         margin-right: 0;
         margin-left: 0;
     }

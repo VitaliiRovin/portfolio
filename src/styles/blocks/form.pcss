@@ -1,59 +1,121 @@
-.form {
-    width: 850px;
-}
+.form__row {
+    display: flex;
+    max-width: 850px;
 
-.form__text {
-    opacity: 0.3;
-    font-size: 16px;
-    font-weight: 600;
-    padding-left: 50px;
+    &:first-child {
+
+        @include tablets {
+            flex-direction: column;
+        }
+    }
+
+    &:last-child {
+        display: flex;
+        justify-content: center;
+
+        button {
+            margin-top: 60px;
+
+            @include desktop {
+                margin-top: 30px;
+            }
+        }
+    }
 }
 
 .form__input {
+    position: relative;
+    width: 100%;
+}
+
+.form__input + .form__input {
+    margin-left: 95px;
+
+    @include desktop {
+        margin-left: 20px;
+    }
+
+    @include tablets {
+        margin-left: 0;
+    }
+}
+
+.form__input-label {
+    opacity: 0.3;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    top: 10px;
+    left: 45px;
+
+    transform: scale(1.125) translateY(26px);
+    transform-origin: 0 50%;
+    transition: all 0.5s;
+
+    @include desktop {
+        font-size: 14px;
+        transform: scale(1) translateY(26px);
+    }
+}
+
+.form__input-real {
+    width: 100%;
     font-size: 18px;
     font-weight: bold;
     border: none;
-    resize: none;
+    outline: none;
     background-color: transparent;
-    padding: 15px 0;
-    width: 330px;
-
-    &::placeholder {
-        color: $text-color;
-        line-height: 2;
-    }
-}
-
-.form__row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
-.form__icon {
-    width: 100%;
-    height: 100%;
-    fill: currentColor;
-    opacity: 0.3;
-}
-
-.form__block {
-    display: flex;
-    align-items: center;
-    border-bottom: solid 1px $text-color;
-}
-
-.form__block-icon {
+    border-bottom: solid 2px $text-color;
     display: block;
-    width: 30px;
-    height: 30px;
-    margin-right: 20px;
+    padding: 40px 0 18px 45px;
+
+    @include desktop {
+        font-size: 14px;
+    }
+
+    &:focus {
+        border-bottom-color: $main-color;
+
+        & ~ {
+            .form__input-icon {
+                color: $main-color;
+
+                .form__icon {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &:focus,
+    &:valid {
+        & ~ {
+            .form__input-label {
+                transform: scale(1) translateY(0);
+            }
+        }
+    }
 }
 
 .form__textarea {
+    resize: none;
+    line-height: 1.5;
     width: 100%;
+    padding: 0 0 18px 45px;
+    margin-top: 40px;
+}
+
+.form__icon {
+    height: 100%;
+    fill: currentColor;
+    opacity: 0.3;
+    transition: all 0.5s;
+}
+
+.form__input-icon {
+    display: block;
+    height: 30px;
+    position: absolute;
+    top: 35px;
+    left: 0;
 }

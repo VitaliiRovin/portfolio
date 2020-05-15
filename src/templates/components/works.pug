@@ -1,0 +1,61 @@
+script(type="text/x-template")#works-container
+  .works__preview
+    display(
+      :currentWork="currentWork"
+      :works="works"
+      @slide="slideWorks"
+    )
+    info(
+      :currentWork="currentWork"
+    )
+
+script(type="text/x-template")#works-display
+  .works__desc-gallery
+    ul.works__number-list
+      li.works__number-item {{currentWork.id}}
+    .works__img-block
+      img.works__img(:src="currentWork.photo")
+      thumbs(
+        :works="reverseWorks"
+        :currentWork="currentWork"
+      )
+    btns(
+      @slide="slideWorks"
+    )
+
+script(type="text/x-template")#works-thumbs
+  ul.works__img-list
+    li.works__img-item(
+      v-for="work in works"
+      :key="work.id"
+      :class="{active : currentWork.id === work.id}"
+    )
+      img.works__img-small(:src="work.photo")
+
+script(type="text/x-template")#works-btns
+  .works__btns
+    button.works__arrow.btn-arrow(
+      @click.prevent="clickWorks('next')"
+    )
+      +icon("arrow-down", "works__btn-left")
+    button.works__arrow.btn-arrow(
+      @click.prevent="clickWorks('prev')"
+    )
+      +icon("arrow-down", "works__btn-right")
+
+script(type="text/x-template")#works-info
+  ul.works__desc-list
+    li.works__desc-item
+      tags(
+        :currentWork="currentWork"
+      )
+      .works__name {{currentWork.name}}
+      p {{currentWork.info}}
+      a.works__link(:href="currentWork.link")
+        +icon("link", "works__link-icon")
+        .works__text Посмотреть сайт
+
+script(type="text/x-template")#works-tags
+  ul.works__technologies-list
+    li.works__technologies-item(v-for="skill in currentWork.skills" :key="skill" )
+      .works__skill {{skill}}

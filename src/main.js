@@ -14,11 +14,9 @@ let sliderReviews = () => {
   const reviewsList = document.querySelector(".reviews__list");
   const reviewsItemArr = document.querySelectorAll(".reviews__item");
   const reviewsBlock = document.querySelector(".reviews__block");
-  // let clientWidth = document.documentElement.clientWidth;
 
   const computed = getComputedStyle(reviewsBlock);
   let currentItem = 0;
-  // let arrLengthDouble = reviewsItemArr.length * 2;
 
   const calkWidthList = () => { //присвоение ширины блоку list
     const width = parseInt(computed.width) / 2; //половина ширины блока
@@ -65,4 +63,4 @@ let sliderReviews = () => {
   })
 };
 
-// sliderReviews();
+sliderReviews();

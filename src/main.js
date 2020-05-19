@@ -76,7 +76,7 @@ window.onload = function () {
         const scrollTarget = document.querySelector(href);
         const elementPosition = scrollTarget.getBoundingClientRect().top;
 
-        window.scrollBy({
+        window.scrollTo({
           top: elementPosition,
           behavior: 'smooth'
         });

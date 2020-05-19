@@ -81,5 +81,66 @@ window.onload = function () {
     }
   }
   smoothSlide();
+
+  let parallaxEffect = () => {//эфект паралакса
+
+    let parallaxMain = (function () {
+      const sky = document.querySelector(".parallax__sky");
+      const mountain = document.querySelector(".parallax__mountain");
+      const balloon = document.querySelector(".parallax__balloon");
+      const cloud = document.querySelector(".parallax__cloud");
+
+      return {
+        move: function (block, windowScroll, strafeAmount) {
+          let strafe = windowScroll / -strafeAmount + "%";
+          let style = block.style;
+          let transformString = "translate3d(0, " + strafe + ", 0)";
+
+          style.transform = transformString;
+          style.webkitTransform = transformString;
+        },
+        init: function (wScroll) {
+          this.move(sky, wScroll, 100);
+          this.move(mountain, wScroll, 55);
+          this.move(balloon, wScroll, 4);
+          this.move(cloud, wScroll, 35);
+        }
+      }
+    }());
+
+    let parallaxBuddha = (function () {
+      const mountainBuddha = document.querySelector(".parallax__buddha-mountains");
+      const buddha = document.querySelector(".parallax__buddha-big");
+
+      return {
+        move: function (block, windowScroll, strafeAmount) {
+          let strafe = windowScroll / -strafeAmount + "%";
+          let style = block.style;
+          let transformString = "translate3d(0, " + strafe + ", 0)";
+
+          style.transform = transformString;
+          style.webkitTransform = transformString;
+        },
+        init: function (wScroll) {
+          this.move(mountainBuddha, wScroll, 40);
+          this.move(buddha, wScroll, 35);
+        }
+      }
+    }());
+
+    window.onscroll = function () {
+      const blockBuddha = document.querySelector(".reviews");
+      let wScroll = window.pageYOffset;
+      let clientHeight = document.documentElement.clientHeight;
+      parallaxMain.init(wScroll);
+
+      let blockBuddhaTop = blockBuddha.getBoundingClientRect().top + pageYOffset;
+      if (blockBuddhaTop < wScroll + clientHeight) {
+        let wScroll = window.pageYOffset - blockBuddhaTop;
+        parallaxBuddha.init(wScroll);
+      }
+    };
+  }
+  parallaxEffect();
 }
 

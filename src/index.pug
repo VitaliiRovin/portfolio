@@ -44,13 +44,30 @@ html(lang="en")
 
           button.btn-bar
             +icon("bar-menu", "btn-bar__icon")
-      .bg-wrapper.bg-wrapper_mountain
+      .bg-wrapper.bg-wrapper_sky
+        -
+          var parallaxList = [
+            {classDiv: "parallax__sky", path: "parallax/Sky.png"},
+            {classDiv: "parallax__mountain", path: "parallax/Mountain.png"},
+            {classDiv: "parallax__balloon", path: "parallax/balloon.png"},
+            {classDiv: "parallax__cloud", path: "parallax/cloud.png"},
+            {classDiv: "parallax__mountain-second", path: "parallax/Mountain1.png"},
+            {classDiv: "parallax__man", path: "parallax/Man.png"},
+            {classDiv: "parallax__white", path: "parallax/White.png"}
+          ];
+        .parallax
+          each item in parallaxList
+            div(class=item.classDiv)
+              picture
+                +source(item.path)
+                img(src="" class="parallax__img")
+
         section.hero.section(id="hero")
           .hero__container.container
             .hero__content
               .hero__user-text Личный сайт #[br]веб разработчика
               h1.hero__user-name Ровин #[br] Виталий
-          a.btn-scroll
+          a.btn-scroll(href="#about")
             .btn-scroll__text Скролл
             +icon("scroll", "btn-scroll__icon")
 
@@ -113,7 +130,20 @@ html(lang="en")
             h2.works__heading Мои работы
             #works-component
 
-      .bg-wrapper.bg-wrapper_budda
+      .bg-wrapper.bg-wrapper_buddha
+        -
+          var parallaxList = [
+            {classDiv: "parallax__buddha-sky", path: "parallax/bSky.png"},
+            {classDiv: "parallax__buddha-mountains", path: "parallax/bMountains.png"},
+            {classDiv: "parallax__buddha-big", path: "parallax/buddha.png"},
+            {classDiv: "parallax__buddha-clouds", path: "parallax/bClouds.png"}
+          ];
+        .parallax
+          each item in parallaxList
+            div(class=item.classDiv)
+              picture
+                +source(item.path)
+                img(src="" class="parallax__img")
         section.reviews.section(id="reviews")
           .triangles.triangles_rotate
             svg(viewBox="0 0 1000 100").triangles__item

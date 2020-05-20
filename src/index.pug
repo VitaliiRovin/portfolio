@@ -103,12 +103,12 @@ html(lang="en")
                   | Этот сайт я сделал в рамках обучения в Школе онлайн образования
                   | LoftSchool. Чуть позже я освежу в нём свой контент.
                   | А пока посмотрите, как тут всё классно и красиво!
-          .triangles
-            svg(viewBox="0 0 1000 100").triangles__item
-              polygon(points="0,0 0,100 1000,100")
-            svg(viewBox="0 0 1000 100").triangles__item
-              polygon(points="1000,0 1000,100 0,100")
 
+        .triangles
+          svg(viewBox="0 0 1000 100").triangles__item
+            polygon(points="0,0 0,100 1000,100")
+          svg(viewBox="0 0 1000 100").triangles__item
+            polygon(points="1000,0 1000,100 0,100")
       section.skills.section(id="skills")
         .skills__container.container
           .skills__content
@@ -131,6 +131,11 @@ html(lang="en")
             #works-component
 
       .bg-wrapper.bg-wrapper_buddha
+        .triangles.triangles_rotate
+          svg(viewBox="0 0 1000 100").triangles__item
+            polygon(points="0,0 0,100 1000,100")
+          svg(viewBox="0 0 1000 100").triangles__item
+            polygon(points="1000,0 1000,100 0,100")
         -
           var parallaxList = [
             {classDiv: "parallax__buddha-sky", path: "parallax/bSky.png"},
@@ -145,11 +150,6 @@ html(lang="en")
                 +source(item.path)
                 img(src="" class="parallax__img")
         section.reviews.section(id="reviews")
-          .triangles.triangles_rotate
-            svg(viewBox="0 0 1000 100").triangles__item
-              polygon(points="0,0 0,100 1000,100")
-            svg(viewBox="0 0 1000 100").triangles__item
-              polygon(points="1000,0 1000,100 0,100")
           .reviews__container.container
             #reviews-component
 

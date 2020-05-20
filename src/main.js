@@ -66,9 +66,15 @@ window.onload = function () {
   sliderReviews();
 
   let scroll = () => { //плавный переход якарей
+    const requestAnimationFrame = window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame
+
     document.querySelectorAll('a[href^="#"').forEach(link => {
 
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', function (e) {
         e.preventDefault();
 
         let href = this.getAttribute('href');
@@ -76,21 +82,70 @@ window.onload = function () {
         const scrollTarget = document.querySelector(href);
         const elementPosition = scrollTarget.getBoundingClientRect().top;
 
-        window.scrollTo({
-          top: elementPosition < 100 ?
-            scrollTarget.offsetTop + scrollTarget.parentElement.offsetTop
-            : elementPosition,
-          behavior: 'smooth'
-        });
+        requestAnimationFrame(window.scrollTo({
+            top: elementPosition < 100 ? scrollTarget.offsetTop + scrollTarget.parentElement.offsetTop : elementPosition,
+            behavior: 'smooth'
+          })
+        );
       });
     });
   }
   scroll();
 
-  let buttonPosition = () => {
+  // let smoothSlide = () => { //плавный переход якарей
+  //   const smoothLinks = document.querySelectorAll('a[href^="#"]');
+  //   for (let smoothLink of smoothLinks) {
+  //     smoothLink.addEventListener('click', function (e) {
+  //       e.preventDefault();
+  //       const id = smoothLink.getAttribute('href');
+  //       const elemToMove = document.querySelector(id);
+  //
+  //       elemToMove.scrollIntoView({
+  //         behavior: 'smooth',
+  //         block: 'start'
+  //       });
+  //     });
+  //   }
+  // }
+  // smoothSlide();
 
-  };
-  buttonPosition()
+  // let scroll = () => { //плавный переход якарей
+  //   const requestAnimationFrame = window.requestAnimationFrame ||
+  //     window.webkitRequestAnimationFrame ||
+  //     window.mozRequestAnimationFrame ||
+  //     window.oRequestAnimationFrame ||
+  //     window.msRequestAnimationFrame
+  //
+  //   function scrollTo(to) {
+  //     const start = window.scrollY || window.pageYOffset;
+  //     const time = Date.now();
+  //     const duration = Math.abs(start - to) / 3;
+  //     (function step() {
+  //       let dx = Math.min(1, (Date.now() - time) / duration)
+  //       let pos = start + (to - start) * dx
+  //       window.scrollTo(0, pos)
+  //       if (dx < 1) {
+  //         requestAnimationFrame(step)
+  //       }
+  //     })()
+  //   }
+  //
+  //   const links = document.querySelectorAll('a[href^="#"]');
+  //
+  //   Array.from(links).forEach(link => {
+  //     link.addEventListener("click", (e) => {
+  //       e.preventDefault();
+  //
+  //       const target = e.target.getAttribute("href");
+  //       const scrollTarget = document.querySelector(target);
+  //       const elementPosition = scrollTarget.getBoundingClientRect().top;
+  //
+  //       // console.log(elementPosition)
+  //       scrollTo(elementPosition)
+  //     })
+  //   })
+  // };
+  // scroll();
 
   let parallaxEffect = () => {//эфект паралакса
 
